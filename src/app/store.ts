@@ -7,18 +7,26 @@ type Store = {
   removeFii: (ticker: string) => void
 }
 
+const getInitialFiis = () => {
+  if (typeof window !== 'undefined') {
+    const storedFiis = localStorage.getItem('fiis-web')
+    return JSON.parse(storedFiis || '[]')
+  }
+  return []
+}
+
 export const useStore = create<Store>()((set) => ({
-  fiis: JSON.parse(window.localStorage.getItem('fiis-web') || '[]'),
+  fiis: getInitialFiis(),
   addFii: (fii: Fii) =>
     set((state) => {
       const updatedItems = [...state.fiis, fii]
-      window.localStorage.setItem('fiis-web', JSON.stringify(updatedItems))
+      localStorage.setItem('fiis-web', JSON.stringify(updatedItems))
       return { fiis: updatedItems }
     }),
   removeFii: (ticker: string) =>
     set((state) => {
       const updatedItems = state.fiis.filter((fii) => fii.ticker !== ticker)
-      window.localStorage.setItem('fiis-web', JSON.stringify(updatedItems))
+      localStorage.setItem('fiis-web', JSON.stringify(updatedItems))
       return { fiis: updatedItems }
     })
 }))
