@@ -2,26 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  @apply m-0 p-0 box-border outline-none focus-visible:ring-2 ring-emerald-600 disabled:cursor-not-allowed
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-zinc-950
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+input, select {
+  @apply p-3 bg-zinc-900 border border-zinc-700 text-zinc-300 rounded-lg
+}
+
+th {
+  @apply bg-black text-zinc-300 p-2 first:rounded-tl-lg last:rounded-tr-lg
+}
+
+tr {
+  @apply odd:bg-zinc-800 even:bg-zinc-800/50
+}
+
+td {
+  @apply p-2 text-zinc-300 text-center border-x border-black
 }
