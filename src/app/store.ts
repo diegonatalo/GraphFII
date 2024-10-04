@@ -4,6 +4,7 @@ import { Fii } from './type'
 
 type Store = {
   fiis: Fii[]
+  totalAmount: number
   addFii: (fii: Fii) => void
   removeFii: (ticker: string) => void
 }
@@ -16,8 +17,13 @@ const getInitialFiis = () => {
   return []
 }
 
+const calculateTotalAmount = (fiis: Fii[]) => {
+  return fiis.reduce((sum, fii) => sum + fii.amount, 0)
+}
+
 export const useStore = create<Store>()((set) => ({
   fiis: getInitialFiis(),
+  totalAmount: calculateTotalAmount(getInitialFiis()),
   addFii: (fii: Fii) =>
     set((state) => {
       try {
@@ -26,10 +32,13 @@ export const useStore = create<Store>()((set) => ({
 
         toast.success('Ativo adicionado com sucesso!')
 
-        return { fiis: updatedItems }
+        return {
+          fiis: updatedItems,
+          totalAmount: calculateTotalAmount(updatedItems)
+        }
       } catch {
         toast.error('Algo deu errado.')
-        return { fiis: state.fiis }
+        return { fiis: state.fiis, totalAmount: state.totalAmount }
       }
     }),
   removeFii: (ticker: string) =>
@@ -40,10 +49,13 @@ export const useStore = create<Store>()((set) => ({
 
         toast.success('Ativo excluído com sucesso!')
 
-        return { fiis: updatedItems }
+        return {
+          fiis: updatedItems,
+          totalAmount: calculateTotalAmount(updatedItems)
+        }
       } catch {
         toast.error('Algo deu errado.')
-        return { fiis: state.fiis }
+        return { fiis: state.fiis, totalAmount: state.totalAmount }
       }
     })
 }))

@@ -1,10 +1,15 @@
+'use client'
+
 import { AllChart } from './components/Charts/AllChart'
 import { SegmentChart } from './components/Charts/SegmentChart'
 import { TypeChart } from './components/Charts/TypeChart'
 import { AddFiiDialog } from './components/Dialogs/AddFiiDialog'
 import { FiisTable } from './components/FiisTable'
+import { useStore } from './store'
 
 export default function Home() {
+  const { totalAmount } = useStore()
+
   return (
     <main className="flex w-full flex-col items-center gap-8 p-8">
       <div className="grid w-max grid-cols-3 gap-4">
@@ -15,7 +20,12 @@ export default function Home() {
 
           <div className="flex flex-col gap-1">
             <h1 className="text-xl font-bold text-zinc-200">Total investido</h1>
-            <span className="text-3xl text-zinc-300">R$ 430,90</span>
+            <span className="text-3xl text-zinc-300">
+              {totalAmount.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+              })}
+            </span>
           </div>
         </div>
 
