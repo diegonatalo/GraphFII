@@ -7,7 +7,7 @@ import { AddFiiForm } from '../Forms/AddFiiForm'
 export const AddFiiDialog = () => {
   return (
     <Dialog.Root>
-      <Dialog.Trigger className="absolute bottom-6 right-6 rounded-lg bg-emerald-500 p-2 text-white opacity-90 transition-opacity hover:opacity-100">
+      <Dialog.Trigger className="fixed bottom-6 right-6 rounded-lg bg-emerald-500 p-2 text-white opacity-90 transition-opacity hover:opacity-100">
         <Plus size={44} weight="bold" />
       </Dialog.Trigger>
       <Dialog.Portal>
