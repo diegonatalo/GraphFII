@@ -4,11 +4,11 @@ import { useStore } from '@/app/store'
 import { Trash } from '@phosphor-icons/react'
 import * as Dialog from '@radix-ui/react-dialog'
 
-type DeleteDialogProps = {
+type DeleteFiiDialogProps = {
   ticker: string
 }
 
-export const DeleteDialog = ({ ticker }: DeleteDialogProps) => {
+export const DeleteFiiDialog = ({ ticker }: DeleteFiiDialogProps) => {
   const { removeFii } = useStore()
 
   return (

@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast'
 import { create } from 'zustand'
 import { Fii } from './type'
 
@@ -19,14 +20,30 @@ export const useStore = create<Store>()((set) => ({
   fiis: getInitialFiis(),
   addFii: (fii: Fii) =>
     set((state) => {
-      const updatedItems = [...state.fiis, fii]
-      localStorage.setItem('fiis-web', JSON.stringify(updatedItems))
-      return { fiis: updatedItems }
+      try {
+        const updatedItems = [...state.fiis, fii]
+        localStorage.setItem('fiis-web', JSON.stringify(updatedItems))
+
+        toast.success('Ativo adicionado com sucesso!')
+
+        return { fiis: updatedItems }
+      } catch {
+        toast.error('Algo deu errado.')
+        return { fiis: state.fiis }
+      }
     }),
   removeFii: (ticker: string) =>
     set((state) => {
-      const updatedItems = state.fiis.filter((fii) => fii.ticker !== ticker)
-      localStorage.setItem('fiis-web', JSON.stringify(updatedItems))
-      return { fiis: updatedItems }
+      try {
+        const updatedItems = state.fiis.filter((fii) => fii.ticker !== ticker)
+        localStorage.setItem('fiis-web', JSON.stringify(updatedItems))
+
+        toast.success('Ativo excluído com sucesso!')
+
+        return { fiis: updatedItems }
+      } catch {
+        toast.error('Algo deu errado.')
+        return { fiis: state.fiis }
+      }
     })
 }))

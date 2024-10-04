@@ -2,7 +2,7 @@
 
 import { useStore } from '@/app/store'
 import { MagicWand } from '@phosphor-icons/react'
-import { DeleteDialog } from '../Dialogs/deleteFii'
+import { DeleteFiiDialog } from '../Dialogs/DeleteFiiDialog'
 
 export const FiisTable = () => {
   const { fiis } = useStore()
@@ -34,7 +34,7 @@ export const FiisTable = () => {
                   })}
                 </td>
                 <td className="flex items-center justify-center border-none">
-                  <DeleteDialog ticker={fii.ticker} />
+                  <DeleteFiiDialog ticker={fii.ticker} />
                 </td>
               </tr>
             ))}

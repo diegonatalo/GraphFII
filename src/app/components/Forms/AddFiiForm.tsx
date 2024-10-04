@@ -3,10 +3,9 @@
 import { Seguimentos, TiposDeFiis } from '@/app/consts'
 import { useStore } from '@/app/store'
 import { Fii } from '@/app/type'
-import { Plus } from '@phosphor-icons/react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-export const NewTickerForm = () => {
+export const AddFiiForm = () => {
   const { addFii } = useStore()
 
   const { register, handleSubmit, watch, reset } = useForm<Fii>()
@@ -25,8 +24,12 @@ export const NewTickerForm = () => {
   }
 
   return (
-    <form className="flex gap-3" onSubmit={handleSubmit(onSubmit)}>
-      <input required placeholder="Ativo" {...register('ticker')} />
+    <form
+      id="NewFiiForm"
+      className="flex flex-col gap-3"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <input required placeholder="Ticker" {...register('ticker')} />
 
       <select required {...register('type')}>
         <option>Tipo</option>
@@ -61,13 +64,6 @@ export const NewTickerForm = () => {
           valueAsNumber: true
         })}
       />
-
-      <button
-        className="rounded-lg border border-emerald-600 bg-emerald-600/70 p-3 font-bold text-zinc-300"
-        type="submit"
-      >
-        <Plus size={24} weight="bold" />
-      </button>
     </form>
   )
 }
