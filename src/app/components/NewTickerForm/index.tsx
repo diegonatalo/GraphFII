@@ -1,7 +1,9 @@
 'use client'
 
+import { Seguimentos, TiposDeFiis } from '@/app/consts'
 import { useStore } from '@/app/store'
 import { Fii } from '@/app/type'
+import { Plus } from '@phosphor-icons/react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 export const NewTickerForm = () => {
@@ -23,23 +25,26 @@ export const NewTickerForm = () => {
   }
 
   return (
-    <form
-      className="flex w-full max-w-[700px] gap-3"
-      onSubmit={handleSubmit(onSubmit)}
-    >
+    <form className="flex gap-3" onSubmit={handleSubmit(onSubmit)}>
       <input required placeholder="Ativo" {...register('ticker')} />
 
       <select required {...register('type')}>
         <option>Tipo</option>
-        <option value="Tijolo">Tijolo</option>
-        <option value="Papel">Papel</option>
+        {TiposDeFiis.map((tipo) => (
+          <option key={tipo} value={tipo}>
+            {tipo}
+          </option>
+        ))}
       </select>
 
       {type === 'Tijolo' ? (
         <select required {...register('segment')}>
           <option>Segmento</option>
-          <option value="Logístico">Logístico</option>
-          <option value="Híbrido">Híbrido</option>
+          {Seguimentos.map((segmento) => (
+            <option key={segmento} value={segmento}>
+              {segmento}
+            </option>
+          ))}
         </select>
       ) : (
         <select disabled {...register('segment')}>
@@ -61,7 +66,7 @@ export const NewTickerForm = () => {
         className="rounded-lg border border-emerald-600 bg-emerald-600/70 p-3 font-bold text-zinc-300"
         type="submit"
       >
-        Cadastrar
+        <Plus size={24} weight="bold" />
       </button>
     </form>
   )

@@ -15,13 +15,21 @@ input, select {
 }
 
 th {
-  @apply bg-black text-zinc-300 p-2 first:rounded-tl-lg last:rounded-tr-lg
+  @apply bg-black text-zinc-300 p-4 first:rounded-tl-lg last:rounded-tr-lg
 }
 
 tr {
-  @apply odd:bg-zinc-800 even:bg-zinc-800/50
+  @apply odd:bg-zinc-900 even:bg-zinc-900/50
 }
 
 td {
-  @apply p-2 text-zinc-300 text-center border-x border-black
+  @apply p-4 text-zinc-300 text-center border-x border-black
+}
+
+table tr:last-child td:first-child {
+  @apply rounded-bl-lg
+}
+
+table tr:last-child td:last-child {
+  @apply rounded-br-lg
 }
