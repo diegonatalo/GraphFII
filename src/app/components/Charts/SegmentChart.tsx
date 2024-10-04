@@ -25,7 +25,7 @@ export const SegmentChart = () => {
       {
         label: 'Valor aplicado',
         data,
-        backgroundColor,
+        backgroundColor: backgroundColor.slice().reverse(),
         borderColor,
         borderWidth: 4
       }

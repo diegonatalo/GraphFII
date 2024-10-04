@@ -9,6 +9,7 @@ export const Seguimentos = [
 ]
 
 export const backgroundColor = [
+  '#0ea5e9',
   '#06b6d4',
   '#14b8a6',
   '#10b981',
@@ -24,8 +25,7 @@ export const backgroundColor = [
   '#a855f7',
   '#8b5cf6',
   '#6366f1',
-  '#3b82f6',
-  '#0ea5e9'
+  '#3b82f6'
 ]
 
 export const borderColor = ['#18181b']

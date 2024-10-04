@@ -28,7 +28,7 @@ export const TypeChart = () => {
       {
         label: 'Valor aplicado',
         data,
-        backgroundColor: ['#06b6d4', '#22c55e', '#f97316'],
+        backgroundColor: ['#0ea5e9', '#22c55e', '#f97316'],
         borderColor,
         borderWidth: 4
       }
