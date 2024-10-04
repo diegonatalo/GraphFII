@@ -1,6 +1,6 @@
 'use client'
 
-import { backgroundColor, borderColor } from '@/app/consts'
+import { borderColor } from '@/app/consts'
 import {
   GenerateTypeChartData,
   OrdenarArrayDeTipos,
@@ -28,7 +28,7 @@ export const TypeChart = () => {
       {
         label: 'Valor aplicado',
         data,
-        backgroundColor,
+        backgroundColor: ['#06b6d4', '#84cc16', '#f97316'],
         borderColor,
         borderWidth: 4
       }
