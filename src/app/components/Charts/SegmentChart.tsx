@@ -1,12 +1,7 @@
 'use client'
 
 import { backgroundColor, borderColor } from '@/app/consts'
-import {
-  GenerateTypeChartData,
-  groupBySegment,
-  OrdenarArrayDeTipos,
-  TransformaEmReais
-} from '@/app/functions'
+import { groupBySegment, TransformaEmReais } from '@/app/functions'
 import { useStore } from '@/app/store'
 import { ArcElement, Chart as ChartJS, Tooltip } from 'chart.js'
 import { Doughnut } from 'react-chartjs-2'
@@ -16,9 +11,7 @@ ChartJS.register(ArcElement, Tooltip)
 export const SegmentChart = () => {
   const { fiis } = useStore()
 
-  const fiisSeparadosPorTipo = groupBySegment(fiis)
-  const fiisOrdenados = OrdenarArrayDeTipos(fiisSeparadosPorTipo)
-  const { labels, data } = GenerateTypeChartData(fiisOrdenados)
+  const { labels, data } = groupBySegment(fiis)
 
   const chartData = {
     labels,
@@ -44,14 +37,11 @@ export const SegmentChart = () => {
             callbacks: {
               label: (item) => {
                 const somaTotal = data.reduce((acc, num) => acc + num, 0)
-                const percentual =
-                  (parseFloat(item.formattedValue) / somaTotal) * 100
+                const percentual = ((item.raw as number) / somaTotal) * 100
                 return (
-                  percentual.toFixed(2).toString() +
+                  percentual.toFixed(2).toString().replace('.', ',') +
                   '% do valor investido: ' +
-                  TransformaEmReais(
-                    parseFloat(item.formattedValue.replace(',', '.'))
-                  )
+                  TransformaEmReais(item.raw as number)
                 )
               }
             }

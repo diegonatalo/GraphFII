@@ -1,12 +1,7 @@
 'use client'
 
 import { borderColor } from '@/app/consts'
-import {
-  GenerateTypeChartData,
-  OrdenarArrayDeTipos,
-  SepararArrayPorTipo,
-  TransformaEmReais
-} from '@/app/functions'
+import { SepararArrayPorTipo, TransformaEmReais } from '@/app/functions'
 import { useStore } from '@/app/store'
 import { ArcElement, Chart as ChartJS, Tooltip } from 'chart.js'
 import { Doughnut } from 'react-chartjs-2'
@@ -16,9 +11,7 @@ ChartJS.register(ArcElement, Tooltip)
 export const TypeChart = () => {
   const { fiis } = useStore()
 
-  const fiisSeparadosPorTipo = SepararArrayPorTipo(fiis)
-  const fiisOrdenados = OrdenarArrayDeTipos(fiisSeparadosPorTipo)
-  const { labels, data } = GenerateTypeChartData(fiisOrdenados)
+  const { labels, data } = SepararArrayPorTipo(fiis)
 
   const chartData = {
     options: {
@@ -47,14 +40,11 @@ export const TypeChart = () => {
             callbacks: {
               label: (item) => {
                 const somaTotal = data.reduce((acc, num) => acc + num, 0)
-                const percentual =
-                  (parseFloat(item.formattedValue) / somaTotal) * 100
+                const percentual = ((item.raw as number) / somaTotal) * 100
                 return (
-                  percentual.toFixed(2).toString() +
+                  percentual.toFixed(2).toString().replace('.', ',') +
                   '% do valor investido: ' +
-                  TransformaEmReais(
-                    parseFloat(item.formattedValue.replace(',', '.'))
-                  )
+                  TransformaEmReais(item.raw as number)
                 )
               }
             }
