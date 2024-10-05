@@ -25,7 +25,15 @@ export const FiisTable = () => {
           <tbody>
             {fiis.map((fii) => (
               <tr key={fii.ticker}>
-                <td>{fii.ticker}</td>
+                <td>
+                  <a
+                    className="underline"
+                    href={`https://investidor10.com.br/fiis/${fii.ticker.toLowerCase()}/`}
+                    target="_blank"
+                  >
+                    {fii.ticker}
+                  </a>
+                </td>
                 <td>{fii.type}</td>
                 <td>{fii.segment || '-'}</td>
                 <td>
