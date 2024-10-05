@@ -1,13 +1,19 @@
 'use client'
 
-import { Plus } from '@phosphor-icons/react'
+import { Fii } from '@/app/type'
+import { NotePencil } from '@phosphor-icons/react'
 import * as Dialog from '@radix-ui/react-dialog'
+import { EditFiiForm } from '../Forms/EditFiiForm'
 
-export const EditFiiDialog = () => {
+type EditFiiDialogProps = {
+  fii: Fii
+}
+
+export const EditFiiDialog = ({ fii }: EditFiiDialogProps) => {
   return (
     <Dialog.Root>
-      <Dialog.Trigger className="absolute bottom-6 right-6 rounded-lg bg-emerald-500 p-2 text-white opacity-90 transition-opacity hover:opacity-100">
-        <Plus size={44} weight="bold" />
+      <Dialog.Trigger className="hover:text-amber-600">
+        <NotePencil size={24} />
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/70 data-[state=open]:animate-overlayShow" />
@@ -20,6 +26,8 @@ export const EditFiiDialog = () => {
               Modifique os campos que julgar necessário.
             </Dialog.Description>
           </div>
+
+          <EditFiiForm fii={fii} />
 
           <div className="flex gap-3">
             <button

@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="pt-br">
       <body className={`bg-zinc-950 ${inter.className}`}>
         {children}
-        <Toaster position="top-right" reverseOrder={false} />
+        <Toaster position="top-center" reverseOrder={false} />
       </body>
     </html>
   )

@@ -3,6 +3,7 @@
 import { useStore } from '@/app/store'
 import { MagicWand } from '@phosphor-icons/react'
 import { DeleteFiiDialog } from '../Dialogs/DeleteFiiDialog'
+import { EditFiiDialog } from '../Dialogs/EditFiiDialog'
 
 export const FiisTable = () => {
   const { fiis } = useStore()
@@ -17,7 +18,7 @@ export const FiisTable = () => {
               <th>Tipo</th>
               <th>Segmento</th>
               <th>Valor investido</th>
-              <th></th>
+              <th>Ações</th>
             </tr>
           </thead>
 
@@ -33,7 +34,9 @@ export const FiisTable = () => {
                     currency: 'BRL'
                   })}
                 </td>
-                <td className="flex items-center justify-center border-none">
+                <td className="flex items-center justify-center gap-4 border-none">
+                  <EditFiiDialog fii={fii} />
+
                   <DeleteFiiDialog ticker={fii.ticker} />
                 </td>
               </tr>
