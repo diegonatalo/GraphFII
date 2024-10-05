@@ -56,3 +56,10 @@ export function GenerateTypeChartData(array: FiiAgrupado[]) {
 
   return { labels, data }
 }
+
+export const TransformaEmReais = (valor: number) => {
+  return valor.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  })
+}

@@ -4,7 +4,8 @@ import { borderColor } from '@/app/consts'
 import {
   GenerateTypeChartData,
   OrdenarArrayDeTipos,
-  SepararArrayPorTipo
+  SepararArrayPorTipo,
+  TransformaEmReais
 } from '@/app/functions'
 import { useStore } from '@/app/store'
 import { ArcElement, Chart as ChartJS, Tooltip } from 'chart.js'
@@ -26,7 +27,7 @@ export const TypeChart = () => {
     labels,
     datasets: [
       {
-        label: 'Valor aplicado',
+        label: '# do valor investido',
         data,
         backgroundColor: ['#0ea5e9', '#22c55e', '#f97316'],
         borderColor,
@@ -39,7 +40,26 @@ export const TypeChart = () => {
     <Doughnut
       data={chartData}
       options={{
-        cutout: 70
+        cutout: 90,
+        plugins: {
+          tooltip: {
+            position: 'average',
+            callbacks: {
+              label: (item) => {
+                const somaTotal = data.reduce((acc, num) => acc + num, 0)
+                const percentual =
+                  (parseFloat(item.formattedValue) / somaTotal) * 100
+                return (
+                  percentual.toFixed(2).toString() +
+                  '% do valor investido: ' +
+                  TransformaEmReais(
+                    parseFloat(item.formattedValue.replace(',', '.'))
+                  )
+                )
+              }
+            }
+          }
+        }
       }}
     />
   )

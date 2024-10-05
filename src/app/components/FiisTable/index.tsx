@@ -1,5 +1,6 @@
 'use client'
 
+import { TransformaEmReais } from '@/app/functions'
 import { useStore } from '@/app/store'
 import { MagicWand } from '@phosphor-icons/react'
 import { DeleteFiiDialog } from '../Dialogs/DeleteFiiDialog'
@@ -36,12 +37,7 @@ export const FiisTable = () => {
                 </td>
                 <td>{fii.type}</td>
                 <td>{fii.segment || '-'}</td>
-                <td>
-                  {fii.amount.toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL'
-                  })}
-                </td>
+                <td>{TransformaEmReais(fii.amount)}</td>
                 <td className="flex items-center justify-center gap-4 border-none">
                   <EditFiiDialog fii={fii} />
 

@@ -5,6 +5,7 @@ import { SegmentChart } from './components/Charts/SegmentChart'
 import { TypeChart } from './components/Charts/TypeChart'
 import { AddFiiDialog } from './components/Dialogs/AddFiiDialog'
 import { FiisTable } from './components/FiisTable'
+import { TransformaEmReais } from './functions'
 import { useStore } from './store'
 
 export default function Home() {
@@ -14,23 +15,20 @@ export default function Home() {
     <main className="flex w-full flex-col items-center gap-8 p-8">
       <div className="grid w-max grid-cols-3 gap-4">
         <div className="flex items-center gap-4 rounded-lg bg-zinc-900 p-4 pr-8">
-          <div className="w-[250px] p-4">
+          <div className="w-[280px] p-4">
             <AllChart />
           </div>
 
           <div className="flex flex-col gap-1">
             <h1 className="text-xl font-bold text-zinc-200">Total investido</h1>
             <span className="text-3xl text-zinc-300">
-              {totalAmount.toLocaleString('pt-BR', {
-                style: 'currency',
-                currency: 'BRL'
-              })}
+              {TransformaEmReais(totalAmount)}
             </span>
           </div>
         </div>
 
         <div className="flex items-center gap-4 rounded-lg bg-zinc-900 p-4 pr-8">
-          <div className="w-[250px] p-4">
+          <div className="w-[280px] p-4">
             <TypeChart />
           </div>
 
@@ -41,7 +39,7 @@ export default function Home() {
         </div>
 
         <div className="flex items-center gap-4 rounded-lg bg-zinc-900 p-4 pr-8">
-          <div className="w-[250px] p-4">
+          <div className="w-[280px] p-4">
             <SegmentChart />
           </div>
 
