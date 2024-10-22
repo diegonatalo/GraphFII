@@ -33,7 +33,7 @@ export const TypeChart = () => {
     <Doughnut
       data={chartData}
       options={{
-        cutout: 90,
+        cutout: 80,
         plugins: {
           tooltip: {
             position: 'average',
@@ -43,7 +43,7 @@ export const TypeChart = () => {
                 const percentual = ((item.raw as number) / somaTotal) * 100
                 return (
                   percentual.toFixed(2).toString().replace('.', ',') +
-                  '% do valor investido: ' +
+                  '%  |  ' +
                   TransformaEmReais(item.raw as number)
                 )
               }

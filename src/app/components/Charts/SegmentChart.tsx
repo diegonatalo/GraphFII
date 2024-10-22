@@ -1,6 +1,6 @@
 'use client'
 
-import { backgroundColor, borderColor } from '@/app/consts'
+import { borderColor } from '@/app/consts'
 import { groupBySegment, TransformaEmReais } from '@/app/functions'
 import { useStore } from '@/app/store'
 import { ArcElement, Chart as ChartJS, Tooltip } from 'chart.js'
@@ -19,7 +19,15 @@ export const SegmentChart = () => {
       {
         label: 'Valor aplicado',
         data,
-        backgroundColor: backgroundColor.slice().reverse(),
+        backgroundColor: [
+          '#ef4444',
+          '#f43f5e',
+          '#ec4899',
+          '#d946ef',
+          '#a855f7',
+          '#8b5cf6',
+          '#6366f1'
+        ].reverse(),
         borderColor,
         borderWidth: 4
       }
@@ -30,7 +38,7 @@ export const SegmentChart = () => {
     <Doughnut
       data={chartData}
       options={{
-        cutout: 90,
+        cutout: 80,
         plugins: {
           tooltip: {
             position: 'average',
@@ -40,7 +48,7 @@ export const SegmentChart = () => {
                 const percentual = ((item.raw as number) / somaTotal) * 100
                 return (
                   percentual.toFixed(2).toString().replace('.', ',') +
-                  '% do valor investido: ' +
+                  '%  |  ' +
                   TransformaEmReais(item.raw as number)
                 )
               }

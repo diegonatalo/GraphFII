@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <main className="flex w-full flex-col items-center gap-8 p-8">
-      <div className="grid w-max grid-cols-3 gap-4">
+      <div className="flex w-max flex-col gap-4 lg:grid lg:grid-cols-3">
         <div className="flex items-center gap-4 rounded-lg bg-zinc-900 p-4 pr-8">
           <div className="w-[280px] p-4">
             <AllChart />

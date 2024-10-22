@@ -27,9 +27,10 @@ export const AllChart = () => {
 
   return (
     <Doughnut
+      className="w-[100px]"
       data={chartData}
       options={{
-        cutout: 90,
+        cutout: 80,
         plugins: {
           tooltip: {
             position: 'average',
@@ -39,7 +40,7 @@ export const AllChart = () => {
                 const percentual = ((item.raw as number) / somaTotal) * 100
                 return (
                   percentual.toFixed(2).toString().replace('.', ',') +
-                  '% do valor investido: ' +
+                  '%  |  ' +
                   TransformaEmReais(item.raw as number)
                 )
               }

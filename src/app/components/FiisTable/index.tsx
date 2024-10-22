@@ -15,6 +15,7 @@ export const FiisTable = () => {
         <table className="w-full max-w-[800px]">
           <thead>
             <tr>
+              <th></th>
               <th>Ticker</th>
               <th>Tipo</th>
               <th>Segmento</th>
@@ -24,8 +25,9 @@ export const FiisTable = () => {
           </thead>
 
           <tbody>
-            {fiis.map((fii) => (
+            {fiis.map((fii, i) => (
               <tr key={fii.ticker}>
+                <td>{i + 1}</td>
                 <td>
                   <a
                     className="underline"
