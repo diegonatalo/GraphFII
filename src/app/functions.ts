@@ -1,12 +1,12 @@
-import { Fii, FiiAgrupado } from './type'
+import { Fii, FiiAgrupado } from './@types/type'
 
 function OrdenarFiis(data: Fii[] | FiiAgrupado[]) {
-  return data.sort((a, b) => b.amount - a.amount)
+  return data.sort((a, b) => b.valorInvestido - a.valorInvestido)
 }
 
 function FormatarFiis(array: Fii[] | FiiAgrupado[]) {
-  const labels = array.map((item) => item.ticker)
-  const data = array.map((item) => item.amount)
+  const labels = array.map((item) => item.nome)
+  const data = array.map((item) => item.valorInvestido)
 
   return { labels, data }
 }
@@ -19,14 +19,14 @@ export const GenerateChartData = (fiis: Fii[]) => {
 
 export function SepararArrayPorTipo(data: Fii[]) {
   const arraySeparado = data.reduce<FiiAgrupado[]>((acc, fii) => {
-    const { type, amount } = fii
+    const { tipo, valorInvestido } = fii
 
-    const itemExistente = acc.find((item) => item.ticker === type)
+    const itemExistente = acc.find((item) => item.nome === tipo)
 
     if (itemExistente) {
-      itemExistente.amount += amount
+      itemExistente.valorInvestido += valorInvestido
     } else {
-      acc.push({ ticker: type, amount })
+      acc.push({ nome: tipo, valorInvestido })
     }
 
     return acc
@@ -39,16 +39,16 @@ export function SepararArrayPorTipo(data: Fii[]) {
 
 export function groupBySegment(fiis: Fii[]) {
   const arraySeparado = fiis
-    .filter((fii) => fii.segment)
+    .filter((fii) => fii.segmento)
     .reduce((acc, fii) => {
-      const existingSegment = acc.find((item) => item.ticker === fii.segment)
+      const existingSegment = acc.find((item) => item.nome === fii.segmento)
 
       if (existingSegment) {
-        existingSegment.amount += fii.amount
+        existingSegment.valorInvestido += fii.valorInvestido
       } else {
         acc.push({
-          ticker: fii.segment!,
-          amount: fii.amount
+          nome: fii.segmento!,
+          valorInvestido: fii.valorInvestido
         })
       }
 

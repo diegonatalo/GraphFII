@@ -57,7 +57,7 @@ export const TypeChart = () => {
         />
       </div>
 
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col">
         <h1 className="text-lg font-bold text-zinc-200">Diversificação</h1>
         <span className="text-2xl text-zinc-300">por tipo</span>
       </div>

@@ -1,22 +1,23 @@
 'use client'
 
-import { Seguimentos, TiposDeFiis } from '@/app/consts'
+import { Fii } from '@/app/@types/type'
+import { Segmentos, TiposDeFiis } from '@/app/consts'
 import { useStore } from '@/app/store'
-import { Fii } from '@/app/type'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 export const AddFiiForm = () => {
   const { addFii } = useStore()
 
   const { register, handleSubmit, watch, reset } = useForm<Fii>()
-  const type = watch('type')
+  const type = watch('tipo')
 
   const onSubmit: SubmitHandler<Fii> = (data) => {
     const newFii: Fii = {
-      ticker: data.ticker,
-      amount: data.amount,
-      type: data.type,
-      segment: data.segment
+      nome: data.nome,
+      classe: 'FII',
+      valorInvestido: data.valorInvestido,
+      tipo: data.tipo,
+      segmento: data.segmento
     }
 
     addFii(newFii)
@@ -29,9 +30,9 @@ export const AddFiiForm = () => {
       className="flex flex-col gap-3"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <input required placeholder="Ticker" {...register('ticker')} />
+      <input required placeholder="Ticker" {...register('nome')} />
 
-      <select required {...register('type')}>
+      <select required {...register('tipo')}>
         <option>Tipo</option>
         {TiposDeFiis.map((tipo) => (
           <option key={tipo} value={tipo}>
@@ -41,16 +42,16 @@ export const AddFiiForm = () => {
       </select>
 
       {type === 'Tijolo' ? (
-        <select required {...register('segment')}>
+        <select required {...register('segmento')}>
           <option>Segmento</option>
-          {Seguimentos.map((segmento) => (
+          {Segmentos.map((segmento) => (
             <option key={segmento} value={segmento}>
               {segmento}
             </option>
           ))}
         </select>
       ) : (
-        <select disabled {...register('segment')}>
+        <select disabled {...register('segmento')}>
           <option>Segmento</option>
         </select>
       )}
@@ -60,7 +61,7 @@ export const AddFiiForm = () => {
         step=".01"
         required
         placeholder="Valor investido"
-        {...register('amount', {
+        {...register('valorInvestido', {
           valueAsNumber: true
         })}
       />

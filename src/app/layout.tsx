@@ -1,9 +1,15 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Montserrat } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 import './globals.css'
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap'
+})
+
+const montserrat = Montserrat({
   subsets: ['latin'],
   display: 'swap'
 })
@@ -20,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={`bg-zinc-950 ${inter.className}`}>
+      <body className={`bg-zinc-950 ${montserrat.className}`}>
         {children}
         <Toaster position="top-center" reverseOrder={false} />
       </body>

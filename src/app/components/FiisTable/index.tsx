@@ -26,24 +26,24 @@ export const FiisTable = () => {
 
           <tbody>
             {fiis.map((fii, i) => (
-              <tr key={fii.ticker}>
+              <tr key={fii.nome}>
                 <td>{i + 1}</td>
                 <td>
                   <a
                     className="underline"
-                    href={`https://investidor10.com.br/fiis/${fii.ticker.toLowerCase()}/`}
+                    href={`https://investidor10.com.br/fiis/${fii.nome.toLowerCase()}/`}
                     target="_blank"
                   >
-                    {fii.ticker}
+                    {fii.nome}
                   </a>
                 </td>
-                <td>{fii.type}</td>
-                <td>{fii.segment || '-'}</td>
-                <td>{TransformaEmReais(fii.amount)}</td>
+                <td>{fii.tipo}</td>
+                <td>{fii.segmento || '-'}</td>
+                <td>{TransformaEmReais(fii.valorInvestido)}</td>
                 <td className="flex items-center justify-center gap-4 border-none">
                   <EditFiiDialog fii={fii} />
 
-                  <DeleteFiiDialog ticker={fii.ticker} />
+                  <DeleteFiiDialog ticker={fii.nome} />
                 </td>
               </tr>
             ))}

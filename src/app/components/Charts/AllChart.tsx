@@ -26,7 +26,7 @@ export const AllChart = () => {
   }
 
   return (
-    <div className="col-span-2 flex items-center justify-center gap-4 rounded-lg bg-zinc-900/50 p-2">
+    <div className="flex items-center justify-center gap-4 rounded-lg bg-zinc-900/50 p-8 pr-16">
       <div>
         <Doughnut
           className="w-[14rem]"

@@ -1,6 +1,6 @@
 import toast from 'react-hot-toast'
 import { create } from 'zustand'
-import { Fii } from './type'
+import { Fii } from './@types/type'
 
 type Store = {
   fiis: Fii[]
@@ -19,7 +19,7 @@ const getInitialFiis = () => {
 }
 
 const calculateTotalAmount = (fiis: Fii[]) => {
-  return fiis.reduce((sum, fii) => sum + fii.amount, 0)
+  return fiis.reduce((sum, fii) => sum + fii.valorInvestido, 0)
 }
 
 export const useStore = create<Store>()((set) => ({
@@ -68,7 +68,7 @@ export const useStore = create<Store>()((set) => ({
   removeFii: (ticker: string) =>
     set((state) => {
       try {
-        const updatedItems = state.fiis.filter((fii) => fii.ticker !== ticker)
+        const updatedItems = state.fiis.filter((fii) => fii.nome !== ticker)
         localStorage.setItem('fiis-web', JSON.stringify(updatedItems))
 
         toast.success('Ativo excluído com sucesso!', {
@@ -109,7 +109,7 @@ export const useStore = create<Store>()((set) => ({
     set((state) => {
       try {
         const updatedItems = state.fiis.map((fii) =>
-          fii.ticker === ticker ? { ...fii, ...updatedFii } : fii
+          fii.nome === ticker ? { ...fii, ...updatedFii } : fii
         )
         localStorage.setItem('fiis-web', JSON.stringify(updatedItems))
 
