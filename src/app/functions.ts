@@ -1,4 +1,4 @@
-import { Fii, FiiAgrupado } from './@types/type'
+import { Fii, FiiAgrupado } from './types/type'
 
 function OrdenarFiis(data: Fii[] | FiiAgrupado[]) {
   return data.sort((a, b) => b.valorInvestido - a.valorInvestido)

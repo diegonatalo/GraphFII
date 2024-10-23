@@ -1,8 +1,8 @@
 'use client'
 
-import { Fii } from '@/app/@types/type'
 import { Segmentos, TiposDeFiis } from '@/app/consts'
 import { useStore } from '@/app/store'
+import { Fii } from '@/app/types/type'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 type EditFiiFormProps = {

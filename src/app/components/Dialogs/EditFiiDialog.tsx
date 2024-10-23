@@ -1,6 +1,6 @@
 'use client'
 
-import { Fii } from '@/app/@types/type'
+import { Fii } from '@/app/types/type'
 import { NotePencil } from '@phosphor-icons/react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { EditFiiForm } from '../Forms/EditFiiForm'

@@ -1,6 +1,6 @@
 import toast from 'react-hot-toast'
 import { create } from 'zustand'
-import { Fii } from './@types/type'
+import { Fii } from './types/type'
 
 type Store = {
   fiis: Fii[]
