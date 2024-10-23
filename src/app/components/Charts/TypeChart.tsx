@@ -30,27 +30,37 @@ export const TypeChart = () => {
   }
 
   return (
-    <Doughnut
-      data={chartData}
-      options={{
-        cutout: 80,
-        plugins: {
-          tooltip: {
-            position: 'average',
-            callbacks: {
-              label: (item) => {
-                const somaTotal = data.reduce((acc, num) => acc + num, 0)
-                const percentual = ((item.raw as number) / somaTotal) * 100
-                return (
-                  percentual.toFixed(2).toString().replace('.', ',') +
-                  '%  |  ' +
-                  TransformaEmReais(item.raw as number)
-                )
+    <div className="flex items-center justify-center gap-4 rounded-lg bg-zinc-900/50 p-2">
+      <div>
+        <Doughnut
+          className="w-[14rem]"
+          data={chartData}
+          options={{
+            cutout: 80,
+            plugins: {
+              tooltip: {
+                position: 'average',
+                callbacks: {
+                  label: (item) => {
+                    const somaTotal = data.reduce((acc, num) => acc + num, 0)
+                    const percentual = ((item.raw as number) / somaTotal) * 100
+                    return (
+                      percentual.toFixed(2).toString().replace('.', ',') +
+                      '%  |  ' +
+                      TransformaEmReais(item.raw as number)
+                    )
+                  }
+                }
               }
             }
-          }
-        }
-      }}
-    />
+          }}
+        />
+      </div>
+
+      <div className="flex flex-col gap-1">
+        <h1 className="text-lg font-bold text-zinc-200">Diversificação</h1>
+        <span className="text-2xl text-zinc-300">por tipo</span>
+      </div>
+    </div>
   )
 }

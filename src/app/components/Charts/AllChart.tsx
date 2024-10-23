@@ -9,7 +9,7 @@ import { Doughnut } from 'react-chartjs-2'
 ChartJS.register(ArcElement, Tooltip)
 
 export const AllChart = () => {
-  const { fiis } = useStore()
+  const { fiis, totalAmount } = useStore()
   const { labels, data } = GenerateChartData(fiis)
 
   const chartData = {
@@ -26,28 +26,39 @@ export const AllChart = () => {
   }
 
   return (
-    <Doughnut
-      className="w-[100px]"
-      data={chartData}
-      options={{
-        cutout: 80,
-        plugins: {
-          tooltip: {
-            position: 'average',
-            callbacks: {
-              label: (item) => {
-                const somaTotal = data.reduce((acc, num) => acc + num, 0)
-                const percentual = ((item.raw as number) / somaTotal) * 100
-                return (
-                  percentual.toFixed(2).toString().replace('.', ',') +
-                  '%  |  ' +
-                  TransformaEmReais(item.raw as number)
-                )
+    <div className="col-span-2 flex items-center justify-center gap-4 rounded-lg bg-zinc-900/50 p-2">
+      <div>
+        <Doughnut
+          className="w-[14rem]"
+          data={chartData}
+          options={{
+            cutout: 80,
+            plugins: {
+              tooltip: {
+                position: 'average',
+                callbacks: {
+                  label: (item) => {
+                    const somaTotal = data.reduce((acc, num) => acc + num, 0)
+                    const percentual = ((item.raw as number) / somaTotal) * 100
+                    return (
+                      percentual.toFixed(2).toString().replace('.', ',') +
+                      '%  |  ' +
+                      TransformaEmReais(item.raw as number)
+                    )
+                  }
+                }
               }
             }
-          }
-        }
-      }}
-    />
+          }}
+        />
+      </div>
+
+      <div className="flex flex-col gap-1">
+        <h1 className="text-xl font-bold text-zinc-200">Total investido</h1>
+        <span className="text-3xl text-zinc-300">
+          {TransformaEmReais(totalAmount)}
+        </span>
+      </div>
+    </div>
   )
 }
