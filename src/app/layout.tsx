@@ -1,13 +1,12 @@
 import type { Metadata } from 'next'
-import { Inter, Montserrat } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 import './globals.css'
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap'
-})
+// const inter = Inter({
+//   subsets: ['latin'],
+//   display: 'swap'
+// })
 
 const montserrat = Montserrat({
   subsets: ['latin'],
