@@ -20,7 +20,7 @@ export const FiisTable = () => {
               <th>Tipo</th>
               <th>Segmento</th>
               <th>Valor investido</th>
-              <th>Ações</th>
+              <th></th>
             </tr>
           </thead>
 
@@ -40,7 +40,7 @@ export const FiisTable = () => {
                 <td>{fii.tipo}</td>
                 <td>{fii.segmento || '-'}</td>
                 <td>{TransformaEmReais(fii.valorInvestido)}</td>
-                <td className="flex items-center justify-center gap-4 border-none">
+                <td className="flex items-center justify-center gap-4">
                   <EditFiiDialog fii={fii} />
 
                   <DeleteFiiDialog ticker={fii.nome} />

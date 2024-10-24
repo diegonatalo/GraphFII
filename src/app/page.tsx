@@ -8,7 +8,7 @@ import { FiisTable } from './components/FiisTable'
 
 export default function Home() {
   return (
-    <main className="flex w-full flex-col items-center gap-8 p-16">
+    <main className="mx-auto flex w-max flex-col items-center gap-8 p-16">
       <div className="grid grid-cols-3 gap-8">
         <AllChart />
 
@@ -17,7 +17,7 @@ export default function Home() {
         <SegmentChart />
       </div>
 
-      <div className="flex w-max gap-8">
+      <div className="flex w-full justify-center">
         <FiisTable />
       </div>
 
