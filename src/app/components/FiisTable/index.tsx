@@ -12,7 +12,7 @@ export const FiisTable = () => {
   return (
     <>
       {fiis.length > 0 ? (
-        <table className="w-full">
+        <table className="relative w-full">
           <thead>
             <tr>
               <th></th>

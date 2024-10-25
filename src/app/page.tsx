@@ -17,7 +17,7 @@ export default function Home() {
         <SegmentChart />
       </div>
 
-      <div className="flex w-full justify-center">
+      <div className="flex h-[30rem] w-full justify-center lg:overflow-y-auto">
         <FiisTable />
       </div>
 

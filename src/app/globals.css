@@ -7,7 +7,19 @@
 }
 
 html, body {
-  @apply min-h-screen
+  @apply min-h-screen lg:overflow-hidden
+}
+
+::-webkit-scrollbar {
+  @apply w-2
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-500 rounded-lg
 }
 
 input, select {
@@ -15,7 +27,7 @@ input, select {
 }
 
 th {
-  @apply text-zinc-400 p-4
+  @apply text-zinc-400 p-4 sticky top-0 bg-zinc-950
 }
 
 tr {
