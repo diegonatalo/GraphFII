@@ -4,6 +4,7 @@ import { AllChart } from './components/Charts/AllChart'
 import { SegmentChart } from './components/Charts/SegmentChart'
 import { TypeChart } from './components/Charts/TypeChart'
 import { AddFiiDialog } from './components/Dialogs/AddFiiDialog'
+import { MagicNumberDialog } from './components/Dialogs/MagicNumberDialog'
 import { FiisTable } from './components/FiisTable'
 
 export default function Home() {
@@ -21,7 +22,10 @@ export default function Home() {
         <FiisTable />
       </div>
 
-      <AddFiiDialog />
+      <div className="fixed bottom-6 right-6 flex flex-col gap-2">
+        <MagicNumberDialog />
+        <AddFiiDialog />
+      </div>
     </main>
   )
 }
