@@ -21,6 +21,7 @@ export const FiisTable = () => {
               <th>Segmento</th>
               <th>Quant. cotas</th>
               <th>Valor investido</th>
+              <th>Preço médio</th>
               <th></th>
             </tr>
           </thead>
@@ -42,6 +43,9 @@ export const FiisTable = () => {
                 <td>{fii.segmento || '-'}</td>
                 <td>{fii.quantCotas}</td>
                 <td>{TransformaEmReais(fii.valorInvestido)}</td>
+                <td>
+                  {TransformaEmReais(fii.valorInvestido / fii.quantCotas)}
+                </td>
                 <td className="flex items-center justify-center gap-4">
                   <EditFiiDialog fii={fii} />
 
