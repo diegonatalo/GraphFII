@@ -19,6 +19,7 @@ export const EditFiiForm = ({ fii }: EditFiiFormProps) => {
     const newFii: Fii = {
       nome: data.nome,
       classe: 'FII',
+      quantCotas: data.quantCotas,
       valorInvestido: data.valorInvestido,
       tipo: data.tipo,
       segmento: data.segmento
@@ -68,6 +69,16 @@ export const EditFiiForm = ({ fii }: EditFiiFormProps) => {
           <option>Segmento</option>
         </select>
       )}
+
+      <input
+        type="number"
+        required
+        placeholder="Quant. cotas"
+        {...register('quantCotas', {
+          valueAsNumber: true
+        })}
+        defaultValue={fii.quantCotas}
+      />
 
       <input
         type="number"

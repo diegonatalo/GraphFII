@@ -2,6 +2,7 @@ type Investimento = {
   nome: string
   classe: 'Renda Fixa' | 'ETF' | 'FII' | 'Ação' | 'Cripto'
   valorInvestido: number
+  quantCotas: number
 }
 
 export type Fii = Investimento & {
