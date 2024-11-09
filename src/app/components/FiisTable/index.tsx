@@ -15,38 +15,59 @@ export const FiisTable = () => {
         <table className="relative w-full">
           <thead>
             <tr>
-              <th></th>
-              <th>Ticker</th>
-              <th>Tipo</th>
-              <th>Segmento</th>
-              <th>Quant. cotas</th>
-              <th>Valor investido</th>
-              <th>Preço médio</th>
-              <th></th>
+              <th className="sticky top-0 bg-gray-950 p-4 text-gray-400"></th>
+              <th className="sticky top-0 bg-gray-950 p-4 text-gray-400">
+                Ticker
+              </th>
+              <th className="sticky top-0 bg-gray-950 p-4 text-gray-400">
+                Tipo
+              </th>
+              <th className="sticky top-0 bg-gray-950 p-4 text-gray-400">
+                Segmento
+              </th>
+              <th className="sticky top-0 bg-gray-950 p-4 text-gray-400">
+                Quant. cotas
+              </th>
+              <th className="sticky top-0 bg-gray-950 p-4 text-gray-400">
+                Valor investido
+              </th>
+              <th className="sticky top-0 bg-gray-950 p-4 text-gray-400">
+                Preço médio
+              </th>
+              <th className="sticky top-0 bg-gray-950 p-4 text-gray-400"></th>
             </tr>
           </thead>
 
           <tbody>
             {fiis.map((fii, i) => (
-              <tr key={fii.nome}>
-                <td>{i + 1}</td>
-                <td>
+              <tr key={fii.nome} className="hover:bg-gray-900">
+                <td className="border-t border-gray-800 p-4 text-center text-gray-200">
+                  {i + 1}
+                </td>
+                <td className="border-t border-gray-800 p-4 text-center text-gray-200">
                   <a
-                    className="underline"
                     href={`https://investidor10.com.br/fiis/${fii.nome.toLowerCase()}/`}
                     target="_blank"
                   >
                     {fii.nome}
                   </a>
                 </td>
-                <td>{fii.tipo}</td>
-                <td>{fii.segmento || '-'}</td>
-                <td>{fii.quantCotas}</td>
-                <td>{TransformaEmReais(fii.valorInvestido)}</td>
-                <td>
+                <td className="border-t border-gray-800 p-4 text-center text-gray-200">
+                  {fii.tipo}
+                </td>
+                <td className="border-t border-gray-800 p-4 text-center text-gray-200">
+                  {fii.segmento || '-'}
+                </td>
+                <td className="border-t border-gray-800 p-4 text-center text-gray-200">
+                  {fii.quantCotas}
+                </td>
+                <td className="border-t border-gray-800 p-4 text-center text-gray-200">
+                  {TransformaEmReais(fii.valorInvestido)}
+                </td>
+                <td className="border-t border-gray-800 p-4 text-center text-gray-200">
                   {TransformaEmReais(fii.valorInvestido / fii.quantCotas)}
                 </td>
-                <td className="flex items-center justify-center gap-4">
+                <td className="flex items-center justify-center gap-4 border-t border-gray-800 p-4 text-center text-gray-200">
                   <EditFiiDialog fii={fii} />
 
                   <DeleteFiiDialog ticker={fii.nome} />
@@ -57,12 +78,12 @@ export const FiisTable = () => {
         </table>
       ) : (
         <section className="flex w-full flex-col items-center gap-4">
-          <MagicWand className="text-zinc-400" size={36} />
+          <MagicWand className="text-gray-400" size={36} />
           <div className="flex flex-col gap-1 text-center">
-            <h1 className="text-xl font-bold text-zinc-400">
+            <h1 className="text-xl font-bold text-gray-400">
               Você não têm nenhum ativo cadastrado!
             </h1>
-            <p className="text-zinc-500">
+            <p className="text-gray-500">
               Tente adicionar um novo ativo e veja a mágica acontecer.
             </p>
           </div>

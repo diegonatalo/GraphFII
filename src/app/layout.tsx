@@ -1,12 +1,16 @@
 import type { Metadata } from 'next'
-import { Montserrat } from 'next/font/google'
+import { Inter, Montserrat } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
+import { AddFiiDialog } from './components/Dialogs/AddFiiDialog'
+import { MagicNumberDialog } from './components/Dialogs/MagicNumberDialog'
+import { Sidebar } from './components/Sidebar'
+import { Topbar } from './components/Topbar'
 import './globals.css'
 
-// const inter = Inter({
-//   subsets: ['latin'],
-//   display: 'swap'
-// })
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap'
+})
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -25,8 +29,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={`bg-zinc-950 ${montserrat.className}`}>
-        {children}
+      <body className={`flex bg-gray-950 ${inter.className}`}>
+        <Sidebar />
+        <div className="flex w-full flex-col">
+          <Topbar />
+          {children}
+        </div>
+        <div className="fixed bottom-6 right-6 flex flex-col gap-2">
+          <MagicNumberDialog />
+          <AddFiiDialog />
+        </div>
         <Toaster position="top-center" reverseOrder={false} />
       </body>
     </html>

@@ -20,19 +20,19 @@ export const AllChart = () => {
         data,
         backgroundColor,
         borderColor,
-        borderWidth: 4
+        borderWidth: 2
       }
     ]
   }
 
   return (
-    <div className="flex items-center justify-center gap-4 rounded-lg bg-zinc-900/50 p-8 pr-16">
-      <div>
+    <div className="flex w-full rounded-lg bg-gray-900/50 p-8">
+      <div className="flex w-full items-center justify-center">
         <Doughnut
-          className="w-[14rem]"
+          className="max-h-[20rem] max-w-[20rem]"
           data={chartData}
           options={{
-            cutout: 80,
+            cutout: 110,
             plugins: {
               tooltip: {
                 position: 'average',
@@ -53,11 +53,36 @@ export const AllChart = () => {
         />
       </div>
 
-      <div className="flex flex-col gap-1">
-        <h1 className="text-xl font-bold text-zinc-200">Total investido</h1>
-        <span className="text-3xl text-zinc-300">
-          {TransformaEmReais(totalAmount)}
-        </span>
+      <div className="flex w-full flex-col justify-center gap-1">
+        <h1 className="text-xl font-bold text-gray-200">Ranking de posições</h1>
+        <table className="w-full font-bold text-gray-300">
+          <tbody>
+            {labels.map((item, i) => (
+              <tr key={item}>
+                <td className="w-[20%]">
+                  <span>{item}</span>
+                </td>
+                <td className="flex items-center gap-2 p-3">
+                  <div
+                    className="h-4 rounded-lg"
+                    style={{
+                      width: `${(data[i] / totalAmount) * 90}%`,
+                      backgroundColor: backgroundColor[i]
+                    }}
+                  />
+                  <span>
+                    {((data[i] / totalAmount) * 100)
+                      .toFixed(2)
+                      .toString()
+                      .replace('.', ',') +
+                      '%  |  ' +
+                      TransformaEmReais(data[i])}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   )

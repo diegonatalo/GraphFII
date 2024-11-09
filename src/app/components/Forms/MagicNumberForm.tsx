@@ -44,7 +44,7 @@ export const MagicNumberForm = () => {
       />
 
       {magicNumber !== '' && (
-        <span className="my-2 text-center font-bold text-zinc-300">
+        <span className="my-2 text-center font-bold text-gray-300">
           {magicNumber}
         </span>
       )}

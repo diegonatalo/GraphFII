@@ -1,6 +1,6 @@
 'use client'
 
-import { borderColor } from '@/app/consts'
+import { backgroundColor3, borderColor } from '@/app/consts'
 import { SepararArrayPorTipo, TransformaEmReais } from '@/app/functions'
 import { useStore } from '@/app/store'
 import { ArcElement, Chart as ChartJS, Tooltip } from 'chart.js'
@@ -9,34 +9,34 @@ import { Doughnut } from 'react-chartjs-2'
 ChartJS.register(ArcElement, Tooltip)
 
 export const TypeChart = () => {
-  const { fiis } = useStore()
+  const { fiis, totalAmount } = useStore()
 
   const { labels, data } = SepararArrayPorTipo(fiis)
 
   const chartData = {
     options: {
-      cutoutPercentage: 80
+      cutoutPercentage: 90
     },
     labels,
     datasets: [
       {
         label: '# do valor investido',
         data,
-        backgroundColor: ['#0ea5e9', '#22c55e', '#f97316'],
+        backgroundColor: backgroundColor3,
         borderColor,
-        borderWidth: 4
+        borderWidth: 2
       }
     ]
   }
 
   return (
-    <div className="flex items-center justify-center gap-4 rounded-lg bg-zinc-900/50 p-2">
-      <div>
+    <div className="flex w-full rounded-lg bg-gray-900/50 p-8">
+      <div className="flex w-full items-center justify-center">
         <Doughnut
-          className="w-[14rem]"
+          className="max-h-[20rem] max-w-[20rem]"
           data={chartData}
           options={{
-            cutout: 80,
+            cutout: 110,
             plugins: {
               tooltip: {
                 position: 'average',
@@ -57,9 +57,38 @@ export const TypeChart = () => {
         />
       </div>
 
-      <div className="flex flex-col">
-        <h1 className="text-lg font-bold text-zinc-200">Diversificação</h1>
-        <span className="text-2xl text-zinc-300">por tipo</span>
+      <div className="flex w-full flex-col justify-center">
+        <h1 className="text-lg font-bold text-gray-200">
+          Diversificação por tipo
+        </h1>
+        <table className="w-full font-bold text-gray-300">
+          <tbody>
+            {labels.map((item, i) => (
+              <tr key={item}>
+                <td className="w-[20%]">
+                  <span>{item}</span>
+                </td>
+                <td className="flex items-center gap-2 p-3">
+                  <div
+                    className="h-4 rounded-lg"
+                    style={{
+                      width: `${(data[i] / totalAmount) * 90}%`,
+                      backgroundColor: backgroundColor3[i]
+                    }}
+                  />
+                  <span>
+                    {((data[i] / totalAmount) * 100)
+                      .toFixed(2)
+                      .toString()
+                      .replace('.', ',') +
+                      '%  |  ' +
+                      TransformaEmReais(data[i])}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   )
