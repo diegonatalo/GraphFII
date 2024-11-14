@@ -28,7 +28,13 @@ export const backgroundColor = [
   '#3b82f6'
 ]
 
-export const backgroundColor2 = ['#10b981', '#0ea5e9', '#8b5cf6', '#f43f5e']
+export const backgroundColor2 = [
+  '#ec4899',
+  '#d946ef',
+  '#a855f7',
+  '#8b5cf6',
+  '#6366f1'
+].reverse()
 
 export const backgroundColor3 = ['#10b981', '#0ea5e9', '#f59e0b', '#ef4444']
 

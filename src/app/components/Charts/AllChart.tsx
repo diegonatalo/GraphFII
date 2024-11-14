@@ -12,6 +12,11 @@ export const AllChart = () => {
   const { fiis, totalAmount } = useStore()
   const { labels, data } = GenerateChartData(fiis)
 
+  const percentuais = data.map(
+    (item) =>
+      ((item / totalAmount) * 100).toFixed(2).toString().replace('.', ',') + '%'
+  )
+
   const chartData = {
     labels,
     datasets: [
@@ -37,15 +42,11 @@ export const AllChart = () => {
               tooltip: {
                 position: 'average',
                 callbacks: {
-                  label: (item) => {
-                    const somaTotal = data.reduce((acc, num) => acc + num, 0)
-                    const percentual = ((item.raw as number) / somaTotal) * 100
-                    return (
-                      percentual.toFixed(2).toString().replace('.', ',') +
-                      '%  |  ' +
-                      TransformaEmReais(item.raw as number)
-                    )
-                  }
+                  label: (item) =>
+                    percentuais[item.dataIndex] +
+                    ' (' +
+                    TransformaEmReais(item.raw as number) +
+                    ')'
                 }
               }
             }
@@ -71,12 +72,7 @@ export const AllChart = () => {
                     }}
                   />
                   <span>
-                    {((data[i] / totalAmount) * 100)
-                      .toFixed(2)
-                      .toString()
-                      .replace('.', ',') +
-                      '%  |  ' +
-                      TransformaEmReais(data[i])}
+                    {percentuais[i] + ' (' + TransformaEmReais(data[i]) + ')'}
                   </span>
                 </td>
               </tr>
