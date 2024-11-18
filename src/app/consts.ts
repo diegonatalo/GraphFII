@@ -1,12 +1,19 @@
-export const TiposDeFiis = ['Tijolo', 'Papel', 'Fundo de fundos', 'Misto']
+export const TiposDeFiis = [
+  'Tijolo',
+  'Papel',
+  'Fundo de fundos',
+  'Desenvolvimento',
+  'Misto'
+] as const
 
 export const Segmentos = [
   'Logístico',
   'Híbrido',
   'Renda Urbana',
   'Shooping',
-  'Lajes Corporativas'
-]
+  'Lajes Corporativas',
+  'Agronegócio'
+] as const
 
 export const backgroundColor = [
   '#0ea5e9',

@@ -1,3 +1,5 @@
+import { Segmentos, TiposDeFiis } from '../consts'
+
 type Investimento = {
   nome: string
   classe: 'Renda Fixa' | 'ETF' | 'FII' | 'Ação' | 'Cripto'
@@ -6,13 +8,8 @@ type Investimento = {
 }
 
 export type Fii = Investimento & {
-  tipo: 'Tijolo' | 'Papel' | 'Fundos de fundos' | 'Misto'
-  segmento?:
-    | 'Logístico'
-    | 'Híbrido'
-    | 'Renda Urbana'
-    | 'Shooping'
-    | 'Lajes Corporativas'
+  tipo: (typeof TiposDeFiis)[number]
+  segmento?: (typeof Segmentos)[number]
   diversificacaoCasoHibrido?: string[]
 }
 
