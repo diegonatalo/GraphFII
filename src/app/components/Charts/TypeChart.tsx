@@ -1,6 +1,6 @@
 'use client'
 
-import { backgroundColor3, borderColor } from '@/app/consts'
+import { bg } from '@/app/consts'
 import { SepararArrayPorTipo, TransformaEmReais } from '@/app/functions'
 import { useStore } from '@/app/store'
 import { ArcElement, Chart as ChartJS, Tooltip } from 'chart.js'
@@ -26,9 +26,8 @@ export const TypeChart = () => {
       {
         label: '# do valor investido',
         data,
-        backgroundColor: backgroundColor3,
-        borderColor,
-        borderWidth: 2
+        backgroundColor: bg,
+        borderWidth: 0
       }
     ]
   }
@@ -73,7 +72,7 @@ export const TypeChart = () => {
                     className="h-4 rounded-lg"
                     style={{
                       width: `${(data[i] / totalAmount) * 90}%`,
-                      backgroundColor: backgroundColor3[i]
+                      backgroundColor: bg[i]
                     }}
                   />
                   <span>

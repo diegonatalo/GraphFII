@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 import { AddFiiDialog } from './components/Dialogs/AddFiiDialog'
-import { MagicNumberDialog } from './components/Dialogs/MagicNumberDialog'
 import { Sidebar } from './components/Sidebar'
 import { Topbar } from './components/Topbar'
 import './globals.css'
@@ -36,7 +35,6 @@ export default function RootLayout({
           {children}
         </div>
         <div className="fixed bottom-6 right-6 flex flex-col gap-2">
-          <MagicNumberDialog />
           <AddFiiDialog />
         </div>
         <Toaster position="top-center" reverseOrder={false} />

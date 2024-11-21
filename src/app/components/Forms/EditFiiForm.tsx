@@ -1,6 +1,6 @@
 'use client'
 
-import { Segmentos, TiposDeFiis } from '@/app/consts'
+import { Segmentos, Tipos } from '@/app/consts'
 import { useStore } from '@/app/store'
 import { Fii } from '@/app/types/type'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -44,7 +44,7 @@ export const EditFiiForm = ({ fii }: EditFiiFormProps) => {
 
       <select required {...register('tipo')}>
         <option>Tipo</option>
-        {TiposDeFiis.map((tipo) => (
+        {Tipos.map((tipo) => (
           <option key={tipo} value={tipo} selected={fii.tipo === tipo}>
             {tipo}
           </option>

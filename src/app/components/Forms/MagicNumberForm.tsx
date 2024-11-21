@@ -1,3 +1,6 @@
+'use client'
+
+import { TransformaEmReais } from '@/app/functions'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
@@ -7,21 +10,25 @@ export const MagicNumberForm = () => {
   const { register, handleSubmit } = useForm<{
     objetivo: number
     rendimento: number
+    preco: number
   }>()
 
   const onSubmit: SubmitHandler<{
     objetivo: number
     rendimento: number
+    preco: number
   }> = (data) => {
-    const result = `Você precisará de ${Math.ceil(data.objetivo / data.rendimento).toLocaleString('pt-BR')} cotas.`
+    const quantCotas = Math.ceil(data.objetivo / data.rendimento)
 
-    setMagicNumber(result)
+    const resultado = `Você precisará de ${quantCotas.toLocaleString('pt-BR')} cotas (${TransformaEmReais(quantCotas * data.preco)})`
+
+    setMagicNumber(resultado)
   }
 
   return (
     <form
       id="magic-number"
-      className="flex flex-col gap-3"
+      className="flex w-full flex-col gap-3"
       onSubmit={handleSubmit(onSubmit)}
     >
       <input
@@ -43,8 +50,25 @@ export const MagicNumberForm = () => {
         })}
       />
 
+      <input
+        type="number"
+        step=".01"
+        placeholder="Preço da cota"
+        required
+        {...register('preco', {
+          valueAsNumber: true
+        })}
+      />
+
+      <button
+        type="submit"
+        className="w-full rounded-lg border border-emerald-500 bg-emerald-500/70 p-4 font-bold text-gray-200"
+      >
+        Calcular
+      </button>
+
       {magicNumber !== '' && (
-        <span className="my-2 text-center font-bold text-gray-300">
+        <span className="my-8 text-center text-lg text-gray-300">
           {magicNumber}
         </span>
       )}

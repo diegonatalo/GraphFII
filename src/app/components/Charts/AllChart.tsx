@@ -1,6 +1,6 @@
 'use client'
 
-import { backgroundColor, borderColor } from '@/app/consts'
+import { bg } from '@/app/consts'
 import { GenerateChartData, TransformaEmReais } from '@/app/functions'
 import { useStore } from '@/app/store'
 import { ArcElement, Chart as ChartJS, Tooltip } from 'chart.js'
@@ -23,9 +23,8 @@ export const AllChart = () => {
       {
         label: 'Valor aplicado',
         data,
-        backgroundColor,
-        borderColor,
-        borderWidth: 2
+        backgroundColor: bg,
+        borderWidth: 0
       }
     ]
   }
@@ -68,7 +67,7 @@ export const AllChart = () => {
                     className="h-4 rounded-lg"
                     style={{
                       width: `${(data[i] / totalAmount) * 90}%`,
-                      backgroundColor: backgroundColor[i]
+                      backgroundColor: i <= 8 ? bg[i] : bg[i - 9]
                     }}
                   />
                   <span>

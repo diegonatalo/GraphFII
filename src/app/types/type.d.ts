@@ -1,4 +1,4 @@
-import { Segmentos, TiposDeFiis } from '../consts'
+import { Segmentos, Tipos } from '../consts'
 
 type Investimento = {
   nome: string
@@ -8,9 +8,8 @@ type Investimento = {
 }
 
 export type Fii = Investimento & {
-  tipo: (typeof TiposDeFiis)[number]
+  tipo: (typeof Tipos)[number]
   segmento?: (typeof Segmentos)[number]
-  diversificacaoCasoHibrido?: string[]
 }
 
 export type FiiAgrupado = {

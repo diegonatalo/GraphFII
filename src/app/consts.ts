@@ -1,4 +1,4 @@
-export const TiposDeFiis = [
+export const Tipos = [
   'Tijolo',
   'Papel',
   'Fundo de fundos',
@@ -35,14 +35,16 @@ export const backgroundColor = [
   '#3b82f6'
 ]
 
-export const backgroundColor2 = [
-  '#ec4899',
-  '#d946ef',
-  '#a855f7',
-  '#8b5cf6',
-  '#6366f1'
-].reverse()
+export const bg = [
+  '#5470c6',
+  '#91cc75',
+  '#fac858',
+  '#ee6666',
+  '#73c0de',
+  '#3ba272',
+  '#fc8452',
+  '#9a60b4',
+  '#ea7ccc'
+]
 
-export const backgroundColor3 = ['#10b981', '#0ea5e9', '#f59e0b', '#ef4444']
-
-export const borderColor = ['#18181b']
+export const borderColor = ['#111827']
