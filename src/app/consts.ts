@@ -4,8 +4,9 @@ export const Tipos = [
   'Fundo de fundos',
   'Hedge fund',
   'Desenvolvimento',
-  'Misto',
-  'Fiagro'
+  'FI-Infra',
+  'Fiagro',
+  'Misto'
 ] as const
 
 export const Segmentos = [
