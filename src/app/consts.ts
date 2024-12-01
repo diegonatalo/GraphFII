@@ -2,8 +2,10 @@ export const Tipos = [
   'Tijolo',
   'Papel',
   'Fundo de fundos',
+  'Hedge fund',
   'Desenvolvimento',
-  'Misto'
+  'Misto',
+  'Fiagro'
 ] as const
 
 export const Segmentos = [
@@ -45,6 +47,18 @@ export const bg = [
   '#fc8452',
   '#9a60b4',
   '#ea7ccc'
+]
+
+export const bg2 = [
+  '#3b82f6',
+  '#84cc16',
+  '#eab308',
+  '#ef4444',
+  '#06b6d4',
+  '#10b981',
+  '#f97316',
+  '#8b5cf6',
+  '#d946ef'
 ]
 
 export const borderColor = ['#111827']
