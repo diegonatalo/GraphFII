@@ -8,7 +8,7 @@ export const Topbar = () => {
   const { totalAmount } = useStore()
 
   return (
-    <div className="flex items-center justify-center gap-2 bg-black px-8 py-4 text-gray-300">
+    <div className="flex items-center justify-center gap-2 bg-black px-8 py-4 text-zinc-300">
       <PiggyBank size={28} />
       Total investido:
       <span className="text-lg font-bold text-green-500">

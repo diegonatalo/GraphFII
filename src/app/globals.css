@@ -19,9 +19,9 @@ html, body {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-500 rounded-lg
+  @apply bg-zinc-500 rounded-lg
 }
 
 input, select {
-  @apply p-3 bg-gray-900 border border-gray-700 text-gray-300 rounded-lg
+  @apply p-3 bg-zinc-900 border border-zinc-700 text-zinc-300 rounded-lg
 }

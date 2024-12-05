@@ -34,8 +34,8 @@ export const TypeChart = () => {
   }
 
   return (
-    <div className="flex w-full rounded-lg bg-gray-900/50 p-8">
-      <div className="flex w-full items-center justify-center">
+    <div className="flex w-full rounded-lg bg-zinc-900/50 p-8">
+      <div className="flex w-full justify-center">
         <Doughnut
           className="max-h-[20rem] max-w-[20rem]"
           data={chartData}
@@ -57,18 +57,18 @@ export const TypeChart = () => {
         />
       </div>
 
-      <div className="flex w-full flex-col justify-center">
-        <h1 className="text-lg font-bold text-gray-200">
+      <div className="flex w-full flex-col justify-center gap-4">
+        <h1 className="text-lg font-bold text-zinc-200">
           Diversificação por tipo
         </h1>
-        <table className="w-full font-bold text-gray-300">
+        <table className="w-full font-bold text-zinc-300">
           <tbody>
             {labels.map((item, i) => (
-              <tr key={item}>
-                <td className="w-[20%]">
+              <tr key={item} className="hover:bg-zinc-800/50">
+                <td className="w-[20%] px-4 py-2">
                   <span>{item}</span>
                 </td>
-                <td className="flex items-center gap-2 p-3">
+                <td className="flex items-center gap-2 py-2">
                   <div
                     className="h-4 rounded-lg"
                     style={{

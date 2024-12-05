@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={`flex bg-gray-950 ${inter.className}`}>
+      <body className={`flex bg-zinc-950 ${inter.className}`}>
         <Sidebar />
         <div className="flex w-full flex-col">
           <Topbar />

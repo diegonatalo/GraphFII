@@ -62,13 +62,13 @@ export const MagicNumberForm = () => {
 
       <button
         type="submit"
-        className="w-full rounded-lg border border-emerald-500 bg-emerald-500/70 p-4 font-bold text-gray-200"
+        className="w-full rounded-lg border border-emerald-500 bg-emerald-500/70 p-4 font-bold text-zinc-200"
       >
         Calcular
       </button>
 
       {magicNumber !== '' && (
-        <span className="my-8 text-center text-lg text-gray-300">
+        <span className="my-8 text-center text-lg text-zinc-300">
           {magicNumber}
         </span>
       )}
