@@ -10,10 +10,16 @@ type Store = {
   editFii: (ticker: string, fii: Fii) => void
 }
 
-const getInitialFiis = () => {
+const getInitialFiis = (): Fii[] => {
   if (typeof window !== 'undefined') {
     const storedFiis = localStorage.getItem('fiis-web')
-    return JSON.parse(storedFiis || '[]')
+    if (storedFiis) {
+      const fiis: Fii[] = JSON.parse(storedFiis)
+
+      return fiis.sort((a, b) => b.valorInvestido - a.valorInvestido)
+    } else {
+      return []
+    }
   }
   return []
 }

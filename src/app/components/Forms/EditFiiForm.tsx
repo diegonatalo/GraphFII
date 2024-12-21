@@ -12,7 +12,7 @@ type EditFiiFormProps = {
 export const EditFiiForm = ({ fii }: EditFiiFormProps) => {
   const { editFii } = useStore()
 
-  const { register, handleSubmit, watch, reset } = useForm<Fii>()
+  const { register, handleSubmit, watch } = useForm<Fii>()
   const type = watch('tipo', fii.tipo)
 
   const onSubmit: SubmitHandler<Fii> = (data) => {
@@ -26,7 +26,6 @@ export const EditFiiForm = ({ fii }: EditFiiFormProps) => {
     }
 
     editFii(fii.nome, newFii)
-    reset()
   }
 
   return (
