@@ -74,7 +74,7 @@ export const useStore = create<Store>()((set) => ({
   removeFii: (ticker: string) =>
     set((state) => {
       try {
-        const updatedItems = state.fiis.filter((fii) => fii.nome !== ticker)
+        const updatedItems = state.fiis.filter((fii) => fii.ticker !== ticker)
         localStorage.setItem('fiis-web', JSON.stringify(updatedItems))
 
         toast.success('Ativo excluído com sucesso!', {
@@ -115,7 +115,7 @@ export const useStore = create<Store>()((set) => ({
     set((state) => {
       try {
         const updatedItems = state.fiis.map((fii) =>
-          fii.nome === ticker ? { ...fii, ...updatedFii } : fii
+          fii.ticker === ticker ? { ...fii, ...updatedFii } : fii
         )
         localStorage.setItem('fiis-web', JSON.stringify(updatedItems))
 

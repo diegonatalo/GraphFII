@@ -40,16 +40,16 @@ export const FiisTable = () => {
 
           <tbody>
             {fiis.map((fii, i) => (
-              <tr key={fii.nome} className="hover:bg-zinc-900">
+              <tr key={fii.ticker} className="hover:bg-zinc-900">
                 <td className="border-t border-zinc-800 p-4 text-center text-zinc-200">
                   {i + 1}
                 </td>
                 <td className="border-t border-zinc-800 p-4 text-center text-zinc-200">
                   <a
-                    href={`https://investidor10.com.br/fiis/${fii.nome.toLowerCase()}/`}
+                    href={`https://investidor10.com.br/fiis/${fii.ticker.toLowerCase()}/`}
                     target="_blank"
                   >
-                    {fii.nome}
+                    {fii.ticker}
                   </a>
                 </td>
                 <td className="border-t border-zinc-800 p-4 text-center text-zinc-200">
@@ -65,12 +65,12 @@ export const FiisTable = () => {
                   {TransformaEmReais(fii.valorInvestido)}
                 </td>
                 <td className="border-t border-zinc-800 p-4 text-center text-zinc-200">
-                  {TransformaEmReais(fii.valorInvestido / fii.quantCotas)}
+                  {TransformaEmReais(fii.precoMedio)}
                 </td>
                 <td className="flex items-center justify-center gap-4 border-t border-zinc-800 p-4 text-center text-zinc-200">
                   <EditFiiDialog fii={fii} />
 
-                  <DeleteFiiDialog ticker={fii.nome} />
+                  <DeleteFiiDialog ticker={fii.ticker} />
                 </td>
               </tr>
             ))}

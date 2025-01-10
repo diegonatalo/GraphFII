@@ -13,10 +13,10 @@ export const AddFiiForm = () => {
 
   const onSubmit: SubmitHandler<Fii> = (data) => {
     const newFii: Fii = {
-      nome: data.nome,
-      classe: 'FII',
+      ticker: data.ticker,
       quantCotas: data.quantCotas,
-      valorInvestido: data.valorInvestido,
+      precoMedio: data.precoMedio,
+      valorInvestido: data.precoMedio * data.quantCotas,
       tipo: data.tipo,
       segmento: data.segmento
     }
@@ -31,7 +31,7 @@ export const AddFiiForm = () => {
       className="flex flex-col gap-3"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <input required placeholder="Ticker" {...register('nome')} />
+      <input required placeholder="Ticker" {...register('ticker')} />
 
       <select required {...register('tipo')}>
         <option>Tipo</option>
@@ -70,8 +70,8 @@ export const AddFiiForm = () => {
         type="number"
         step=".01"
         required
-        placeholder="Valor investido"
-        {...register('valorInvestido', {
+        placeholder="Preço Médio"
+        {...register('precoMedio', {
           valueAsNumber: true
         })}
       />

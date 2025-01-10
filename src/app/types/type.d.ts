@@ -1,18 +1,15 @@
 import { Segmentos, Tipos } from '../consts'
 
-type Investimento = {
-  nome: string
-  classe: 'Renda Fixa' | 'ETF' | 'FII' | 'Ação' | 'Cripto'
-  valorInvestido: number
-  quantCotas: number
-}
-
-export type Fii = Investimento & {
+export type Fii = {
+  ticker: string
   tipo: (typeof Tipos)[number]
   segmento?: (typeof Segmentos)[number]
+  quantCotas: number
+  precoMedio: number
+  valorInvestido: number
 }
 
 export type FiiAgrupado = {
-  nome: string
+  ticker: string
   valorInvestido: number
 }

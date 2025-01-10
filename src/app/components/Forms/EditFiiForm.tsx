@@ -17,15 +17,15 @@ export const EditFiiForm = ({ fii }: EditFiiFormProps) => {
 
   const onSubmit: SubmitHandler<Fii> = (data) => {
     const newFii: Fii = {
-      nome: data.nome,
-      classe: 'FII',
+      ticker: data.ticker,
       quantCotas: data.quantCotas,
-      valorInvestido: data.valorInvestido,
+      precoMedio: data.precoMedio,
+      valorInvestido: data.precoMedio * data.quantCotas,
       tipo: data.tipo,
       segmento: data.segmento
     }
 
-    editFii(fii.nome, newFii)
+    editFii(fii.ticker, newFii)
   }
 
   return (
@@ -37,8 +37,8 @@ export const EditFiiForm = ({ fii }: EditFiiFormProps) => {
       <input
         required
         placeholder="Ticker"
-        {...register('nome')}
-        defaultValue={fii.nome}
+        {...register('ticker')}
+        defaultValue={fii.ticker}
       />
 
       <select required {...register('tipo')}>
@@ -83,11 +83,11 @@ export const EditFiiForm = ({ fii }: EditFiiFormProps) => {
         type="number"
         step=".01"
         required
-        placeholder="Valor investido"
-        {...register('valorInvestido', {
+        placeholder="Preço Médio"
+        {...register('precoMedio', {
           valueAsNumber: true
         })}
-        defaultValue={fii.valorInvestido}
+        defaultValue={fii.precoMedio}
       />
     </form>
   )

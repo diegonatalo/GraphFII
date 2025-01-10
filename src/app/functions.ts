@@ -5,7 +5,7 @@ function OrdenarFiis(data: Fii[] | FiiAgrupado[]) {
 }
 
 function FormatarFiis(array: Fii[] | FiiAgrupado[]) {
-  const labels = array.map((item) => item.nome)
+  const labels = array.map((item) => item.ticker)
   const data = array.map((item) => item.valorInvestido)
 
   return { labels, data }
@@ -21,12 +21,12 @@ export function SepararArrayPorTipo(data: Fii[]) {
   const arraySeparado = data.reduce<FiiAgrupado[]>((acc, fii) => {
     const { tipo, valorInvestido } = fii
 
-    const itemExistente = acc.find((item) => item.nome === tipo)
+    const itemExistente = acc.find((item) => item.ticker === tipo)
 
     if (itemExistente) {
       itemExistente.valorInvestido += valorInvestido
     } else {
-      acc.push({ nome: tipo, valorInvestido })
+      acc.push({ ticker: tipo, valorInvestido })
     }
 
     return acc
@@ -41,13 +41,13 @@ export function groupBySegment(fiis: Fii[]) {
   const arraySeparado = fiis
     .filter((fii) => fii.segmento)
     .reduce((acc, fii) => {
-      const existingSegment = acc.find((item) => item.nome === fii.segmento)
+      const existingSegment = acc.find((item) => item.ticker === fii.segmento)
 
       if (existingSegment) {
         existingSegment.valorInvestido += fii.valorInvestido
       } else {
         acc.push({
-          nome: fii.segmento!,
+          ticker: fii.segmento!,
           valorInvestido: fii.valorInvestido
         })
       }
