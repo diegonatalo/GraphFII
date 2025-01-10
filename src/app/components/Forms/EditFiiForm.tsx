@@ -19,8 +19,7 @@ export const EditFiiForm = ({ fii }: EditFiiFormProps) => {
     const newFii: Fii = {
       ticker: data.ticker,
       quantCotas: data.quantCotas,
-      precoMedio: data.precoMedio,
-      valorInvestido: data.precoMedio * data.quantCotas,
+      valorInvestido: data.valorInvestido,
       tipo: data.tipo,
       segmento: data.segmento
     }
@@ -34,21 +33,24 @@ export const EditFiiForm = ({ fii }: EditFiiFormProps) => {
       className="flex flex-col gap-3"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <input
-        required
-        placeholder="Ticker"
-        {...register('ticker')}
-        defaultValue={fii.ticker}
-      />
+      <div className="flex gap-3">
+        <input
+          className="w-[45%]"
+          required
+          placeholder="Ticker"
+          {...register('ticker')}
+          defaultValue={fii.ticker}
+        />
 
-      <select required {...register('tipo')}>
-        <option>Tipo</option>
-        {Tipos.map((tipo) => (
-          <option key={tipo} value={tipo} selected={fii.tipo === tipo}>
-            {tipo}
-          </option>
-        ))}
-      </select>
+        <select className="w-full" required {...register('tipo')}>
+          <option>Tipo</option>
+          {Tipos.map((tipo) => (
+            <option key={tipo} value={tipo} selected={fii.tipo === tipo}>
+              {tipo}
+            </option>
+          ))}
+        </select>
+      </div>
 
       {type === 'Tijolo' ? (
         <select required {...register('segmento')}>
@@ -69,26 +71,30 @@ export const EditFiiForm = ({ fii }: EditFiiFormProps) => {
         </select>
       )}
 
-      <input
-        type="number"
-        required
-        placeholder="Quant. cotas"
-        {...register('quantCotas', {
-          valueAsNumber: true
-        })}
-        defaultValue={fii.quantCotas}
-      />
+      <div className="flex gap-3">
+        <input
+          className="w-full"
+          type="number"
+          required
+          placeholder="Quant. cotas"
+          {...register('quantCotas', {
+            valueAsNumber: true
+          })}
+          defaultValue={fii.quantCotas}
+        />
 
-      <input
-        type="number"
-        step=".01"
-        required
-        placeholder="Preço Médio"
-        {...register('precoMedio', {
-          valueAsNumber: true
-        })}
-        defaultValue={fii.precoMedio}
-      />
+        <input
+          className="w-full"
+          type="number"
+          step=".01"
+          required
+          placeholder="Valor investido"
+          {...register('valorInvestido', {
+            valueAsNumber: true
+          })}
+          defaultValue={fii.valorInvestido}
+        />
+      </div>
     </form>
   )
 }

@@ -5,7 +5,6 @@ export type Fii = {
   tipo: (typeof Tipos)[number]
   segmento?: (typeof Segmentos)[number]
   quantCotas: number
-  precoMedio: number
   valorInvestido: number
 }
 

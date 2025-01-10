@@ -65,7 +65,7 @@ export const FiisTable = () => {
                   {TransformaEmReais(fii.valorInvestido)}
                 </td>
                 <td className="border-t border-zinc-800 p-4 text-center text-zinc-200">
-                  {TransformaEmReais(fii.precoMedio)}
+                  {TransformaEmReais(fii.valorInvestido / fii.quantCotas)}
                 </td>
                 <td className="flex items-center justify-center gap-4 border-t border-zinc-800 p-4 text-center text-zinc-200">
                   <EditFiiDialog fii={fii} />
